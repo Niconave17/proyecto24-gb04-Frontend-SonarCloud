@@ -41,7 +41,7 @@ public class Video {
 
   private ArrayList<String> countryRestricted = new ArrayList<>();
 
-  private Long video_user;
+  private Long videouser;
   
   private Long views;
 
@@ -231,8 +231,8 @@ public class Video {
     this.countryRestricted = countryRestricted;
   }
 
-  public Video video_user(Long video_user) {
-    this.video_user = video_user;
+  public Video videouser(Long video_user) {
+    this.videouser = video_user;
     return this;
   }
 
@@ -242,13 +242,13 @@ public class Video {
    */
   
 
-  @JsonProperty("video_user")
+  @JsonProperty("videouser")
   public Long getUser() {
-    return video_user;
+    return videouser;
   }
 
-  public void setUser(Long video_user) {
-    this.video_user = video_user;
+  public void setUser(Long videouser) {
+    this.videouser = videouser;
   }
 
   @JsonProperty("views")
@@ -277,12 +277,12 @@ public class Video {
         Objects.equals(this.likes, video.likes) &&
         Objects.equals(this.ageRestricted, video.ageRestricted) &&
         Objects.equals(this.countryRestricted, video.countryRestricted) &&
-        Objects.equals(this.video_user, video.video_user);
+        Objects.equals(this.videouser, video.videouser);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, duration, title, uploadDate, description, genre, likes, ageRestricted, countryRestricted, video_user);
+    return Objects.hash(id, duration, title, uploadDate, description, genre, likes, ageRestricted, countryRestricted, videouser);
   }
 
   @Override
@@ -298,7 +298,7 @@ public class Video {
     sb.append("    likes: ").append(toIndentedString(likes)).append("\n");
     sb.append("    ageRestricted: ").append(toIndentedString(ageRestricted)).append("\n");
     sb.append("    countryRestricted: ").append(toIndentedString(countryRestricted)).append("\n");
-    sb.append("    video_user: ").append(toIndentedString(video_user)).append("\n");
+    sb.append("    videouser: ").append(toIndentedString(videouser)).append("\n");
     sb.append("}");
     return sb.toString();
   }
