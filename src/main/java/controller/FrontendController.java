@@ -403,7 +403,7 @@ public class FrontendController {
     @PostMapping("/user/uploadVideo")
     public ResponseEntity<Void> uploadVideo(@RequestBody Video video, HttpSession session) {
         System.out.println("------------ FrontendController -> uploadVideo() ------------");
-        //System.out.println("Recibido video: " + video);
+       
         User user = (User) session.getAttribute("user");
         video.setUser(user.getId());
         video.setDuration("00:30:00");
@@ -498,18 +498,22 @@ public class FrontendController {
         
         for (Long videolike : likedVideos) {
         	//System.out.println("Video que le ha gustado -------------" + videolike);
-        	if(videolike == video.getId()) {
+        	if (videolike != null && videolike.equals(video.getId())) {
+        	    // Código a ejecutar si son iguales
+        	}
+
         		liked = true;
         	}
-        }
-        
         model.addAttribute("liked", liked);
 		model.addAttribute("video", video);
 		model.addAttribute("user", user);
 		model.addAttribute("comments", comentarios);
 		
 		return "view";
-    }
+        }
+        
+       
+    
     
     @PostMapping("/user/like")
     public ResponseEntity<Void> darMeGusta(@RequestBody Map<String, Long> requestBody, HttpSession session) {
@@ -643,6 +647,9 @@ public class FrontendController {
 
         // Seleccionar un género aleatorio
         Random random = new Random();
+        for (int i = 0; i < 10; i++) {
+            System.out.println(random.nextInt(100)); // Reutilización de la instancia
+        }
         String generoAleatorio = generos[random.nextInt(generos.length)];
         
         List<Video> videosGenero = recomendationServiceClient.getVideoGenero(generoAleatorio);
