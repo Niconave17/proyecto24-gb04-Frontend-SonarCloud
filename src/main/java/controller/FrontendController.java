@@ -504,15 +504,16 @@ public class FrontendController {
 
         		liked = true;
         	}
-        }
-        
         model.addAttribute("liked", liked);
 		model.addAttribute("video", video);
 		model.addAttribute("user", user);
 		model.addAttribute("comments", comentarios);
 		
 		return "view";
-    }
+        }
+        
+       
+    
     
     @PostMapping("/user/like")
     public ResponseEntity<Void> darMeGusta(@RequestBody Map<String, Long> requestBody, HttpSession session) {
